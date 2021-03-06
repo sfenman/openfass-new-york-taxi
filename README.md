@@ -1,1 +1,1 @@
-##Project for the course Digital Infrastructure Technologies of Aueb
+## Project for the course Digital Infrastructure Technologies of Aueb
