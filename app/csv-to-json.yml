@@ -13,6 +13,8 @@ functions:
     lang: python3
     handler: ./map-to-quarter
     image: unipasssbackend/map-to-quarter:latest
-    enviroment:
-      content_type: multipart/form-data
+  reduce-count-quarter:
+    lang: python3
+    handler: ./reduce-count-quarter
+    image: unipasssbackend/reduce-count-quarter:latest
 

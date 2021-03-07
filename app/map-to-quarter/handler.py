@@ -48,12 +48,14 @@ def handle(req):
     json_req = json.loads(req)
     for route in json_req["list"]:
         if is_in_quarter(QUARTER_ONE, route):
-            result.append({'q1', 1})
+            result.append({"quarter": 'q1', "ocurance": 1})
         elif is_in_quarter(QUARTER_TWO, route):
-            result.append({'q2', 1})
+            result.append({"quarter": 'q2', "ocurance": 1})
         elif is_in_quarter(QUARTER_THREE, route):
-            result.append({'q3', 1})
+            result.append({"quarter": 'q3', "ocurance": 1})
         elif is_in_quarter(QUARTER_FOUR, route):
-            result.append({'q4', 1})
+            result.append({"quarter": 'q4', "ocurance": 1})
     # send to reducer
+    result = {"list": result}
+    result = json.dumps(result)
     return result

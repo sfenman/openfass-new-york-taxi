@@ -1,3 +1,4 @@
 template
 build
 map-to-quarter/test.json
+reduce-count-quarter/test.json
