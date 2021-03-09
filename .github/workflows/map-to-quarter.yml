@@ -1,0 +1,27 @@
+name: Test and deploy map to quarter
+
+on:
+  push:
+    paths:
+      - './app/map-to-quarter'
+      - './app/map-to-quarter.yml'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: 3.8
+
+    - name: Install dependencies
+      working-directory: ./app/map-to-quarter
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        curl -sSLf https://cli.openfaas.com | sudo sh
+    - name: Test map to quarter with pytest
+      working-directory: ./app/map-to-quarter
+      run: python test_handler.py
+    - name: Deploy map to quarter to server
+      run: faas-cli up -f map-to-quarter.yml

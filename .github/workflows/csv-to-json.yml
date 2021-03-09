@@ -1,0 +1,33 @@
+name: Test and deploy csv to json
+
+on:
+  push:
+    paths:
+      - './app/csv-to-json'
+      - './app/csv-to-json.yml'
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: 3.8
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      working-directory: ./app/csv-to-json
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        curl -sSLf https://cli.openfaas.com | sudo sh
+    - name: Test map to quarter with pytest
+      working-directory: ./app/csv-to-json
+      run: python test_handler.py
+    - name: Deploy csv to json to server
+      run: faas-cli up -f csv-to-json.yml
