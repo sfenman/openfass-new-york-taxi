@@ -3,12 +3,6 @@ provider:
   name: openfaas
   gateway: http://127.0.0.1:8080/to-json
 functions:
-  csv-to-json:
-    lang: python3
-    handler: ./csv-to-json
-    image: unipasssbackend/csv-to-json:latest
-    enviroment:
-      content_type: multipart/form-data
   map-to-quarter:
     lang: python3
     handler: ./map-to-quarter

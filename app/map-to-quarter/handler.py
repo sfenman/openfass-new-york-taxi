@@ -1,5 +1,5 @@
 import json
-import logging
+import requests
 
 QUARTER_ONE = {
     "minLat": 40.0000000000000,
@@ -44,15 +44,17 @@ def is_in_quarter(quarter, route):
     return True
 
 
+def send_to_mapper(quarters):
+    url = 'https://openfaas-ingress-billk97.cloud.okteto.net/function/reduce-count-quarter'
+    requests_data = json.dumps(quarters)
+    response = requests.post(url, data=requests_data)
+    return response
+
+
 def handle(req):
-    result = []
     json_req = json.loads(req)
-    logging.debug('This is a debug message')
-    logging.info('This is an info message')
-    logging.warning('This is a warning message')
-    logging.error('This is an error message')
-    logging.critical('This is a critical message')
-    for route in json_req["list"]:
+    result = []
+    for route in json_req:
         if is_in_quarter(QUARTER_ONE, route):
             result.append({"quarter": 'q1', "ocurance": 1})
         elif is_in_quarter(QUARTER_TWO, route):
@@ -61,7 +63,8 @@ def handle(req):
             result.append({"quarter": 'q3', "ocurance": 1})
         elif is_in_quarter(QUARTER_FOUR, route):
             result.append({"quarter": 'q4', "ocurance": 1})
-    # send to reducer
-    result = {"list": result}
-    result = json.dumps(result)
-    # return result
+
+    reducer_response = send_to_mapper(result)
+    response = reducer_response.json()
+
+    return json.dumps(response)
