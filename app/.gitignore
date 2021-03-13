@@ -1,4 +1,6 @@
 template
 build
 map-to-quarter/test.json
+map-to-quarter/__pycache__
 reduce-count-quarter/test.json
+csv-to-json-http/csv.csv

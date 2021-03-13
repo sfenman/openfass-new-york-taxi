@@ -13,8 +13,15 @@ functions:
     lang: python3
     handler: ./map-to-quarter
     image: unipasssbackend/map-to-quarter:latest
+    environment:
+      write_debug: true
+      combine_output: false
   reduce-count-quarter:
     lang: python3
     handler: ./reduce-count-quarter
     image: unipasssbackend/reduce-count-quarter:latest
+  csv-to-json-http:
+    lang: python3-http
+    handler: ./csv-to-json-http
+    image: unipasssbackend/csv-to-json-http:latest
 

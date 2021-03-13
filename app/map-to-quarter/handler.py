@@ -1,4 +1,5 @@
 import json
+import logging
 
 QUARTER_ONE = {
     "minLat": 40.0000000000000,
@@ -46,6 +47,11 @@ def is_in_quarter(quarter, route):
 def handle(req):
     result = []
     json_req = json.loads(req)
+    logging.debug('This is a debug message')
+    logging.info('This is an info message')
+    logging.warning('This is a warning message')
+    logging.error('This is an error message')
+    logging.critical('This is a critical message')
     for route in json_req["list"]:
         if is_in_quarter(QUARTER_ONE, route):
             result.append({"quarter": 'q1', "ocurance": 1})
@@ -58,4 +64,4 @@ def handle(req):
     # send to reducer
     result = {"list": result}
     result = json.dumps(result)
-    return result
+    # return result
