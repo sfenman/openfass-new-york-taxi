@@ -1,0 +1,26 @@
+name: Test and deploy reduce count quarter
+
+on:
+  push:
+    paths:
+      - './app/reduce-counter-quarter'
+      - './app/reduce-counter-quarter.yml'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: 3.8
+
+    - name: Install dependencies
+      working-directory: ./app/reduce-count-quarter
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Test reduce count quarter with pytest
+      working-directory: ./app/reduce-count-quarter
+      run: python test_handler.py
+    - name: Deploy reduce count quarter to server
+      run: faas-cli up -f reduce-count-quarter.yml
