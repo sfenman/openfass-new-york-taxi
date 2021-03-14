@@ -1,0 +1,26 @@
+[
+   {
+      "id":"id3004672",
+      "vendor_id":"1",
+      "pickup_datetime":"2016-06-30 22:40:58",
+      "drop_off_datetime": "2016-06-30 22:59:58",
+      "passenger_count": 1,
+      "pickup_longitude": -73.9881286621094,
+      "pickup_latitude": 40.7320289611816,
+      "drop_off_longitude": -73.9901733398438,
+      "drop_off_latitude": 40.7566795349121,
+      "store_and_fwd_flag":"N"
+   },
+   {
+      "id":"id3505355",
+      "vendor_id":"1",
+      "pickup_datetime":"2016-06-30 23:59:53",
+      "dro_off_datetime": "2016-06-30 23:59:58",
+      "passenger_count": 3,
+      "pickup_longitude": -73.9642028808594,
+      "pickup_latitude": 40.6799926757813,
+      "drop_off_longitude": -73.9598083496094,
+      "drop_off_latitude": 40.655403137207,
+      "store_and_fwd_flag":"N"
+   }
+]
