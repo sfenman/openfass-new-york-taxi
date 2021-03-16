@@ -1,5 +1,6 @@
 import json
 import requests
+import logging
 
 QUARTER_ONE = {
     "minLat": 40.0000000000000,
@@ -31,6 +32,7 @@ QUARTER_FOUR = {
 
 
 def is_in_quarter(quarter, route):
+
     if (
         route["pickup_longitude"] > quarter["maxLon"]
         or route["pickup_longitude"] < quarter["minLon"]
@@ -45,7 +47,7 @@ def is_in_quarter(quarter, route):
 
 
 def send_to_mapper(quarters):
-    url = 'https://openfaas-ingress-billk97.cloud.okteto.net/function/reduce-count-quarter'
+    url = 'http://gateway.openfaas:8080/function/reduce-count-quarter'
     requests_data = json.dumps(quarters)
     response = requests.post(url, data=requests_data)
     return response

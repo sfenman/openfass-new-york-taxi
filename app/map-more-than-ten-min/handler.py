@@ -5,7 +5,7 @@ from datetime import timedelta
 
 
 def send_to_reducer(quarters):
-    url = 'https://openfaas-ingress-billk97.cloud.okteto.net/function/reduce-count-quarter'
+    url = 'http://gateway.openfaas:8080/function/reduce-count-quarter'
     requests_data = json.dumps(quarters)
     response = requests.post(url, data=requests_data)
     return response

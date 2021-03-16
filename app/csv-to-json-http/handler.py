@@ -31,7 +31,7 @@ def get_csv_data(event):
 
 
 def send_to_mapper(routes):
-    url = 'https://openfaas-ingress-billk97.cloud.okteto.net/function/map-to-quarter'
+    url = 'http://gateway.openfaas:8080/function/map-to-quarter'
     routes = json.dumps(routes)
     response = requests.post(url, data=routes)
     logging.warning(response)

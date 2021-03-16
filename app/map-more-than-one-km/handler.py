@@ -5,11 +5,10 @@ import requests
 
 
 def send_to_reducer(quarters):
-    url = 'https://openfaas-ingress-billk97.cloud.okteto.net/function/reduce-count-quarter'
+    url = 'http://gateway.openfaas:8080/function/reduce-count-quarter'
     requests_data = json.dumps(quarters)
     response = requests.post(url, data=requests_data)
     return response
-
 
 
 def is_more_than_one_km(route):
@@ -26,7 +25,6 @@ def is_more_than_one_km(route):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
     print(EARTH_RADIUS_KM * c)
     return EARTH_RADIUS_KM * c > 1
-
 
 
 def get_routes_longer_than_one_km(routes):
