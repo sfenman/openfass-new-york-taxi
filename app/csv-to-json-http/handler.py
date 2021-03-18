@@ -5,7 +5,7 @@ from datetime import datetime
 
 def parse_csv(data):
     lines = data.splitlines()
-    lines.pop(0)
+    # lines.pop(0)
     routes = []
     for line in lines:
         values = line.split(',')
@@ -13,12 +13,13 @@ def parse_csv(data):
             'id': values[0],
             'vendor_id': values[1],
             'pickup_datetime': values[2],
-            'passenger_count': values[3],
-            'pickup_longitude': values[4],
-            'pickup_latitude': values[5],
-            'drop_off_longitude': values[6],
-            'drop_off_latitude': values[7],
-            'store_and_fwd_flag': values[8]
+            'drop_off_datetime': values[3],
+            'passenger_count': values[4],
+            'pickup_longitude': values[5],
+            'pickup_latitude': values[6],
+            'drop_off_longitude': values[7],
+            'drop_off_latitude': values[8],
+            'store_and_fwd_flag': values[9]
         }
         routes.append(route)
     return routes
