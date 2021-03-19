@@ -23,7 +23,6 @@ def is_more_than_one_km(route):
     lat2 = math.radians(lat2)
     a = math.sin(d_lat/2) * math.sin(d_lat/2) + math.sin(d_lon/2) * math.sin(d_lon/2) * math.cos(lat1) * math.cos(lat2)
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
-    print(EARTH_RADIUS_KM * c)
     return EARTH_RADIUS_KM * c > 1
 
 
@@ -38,6 +37,7 @@ def get_routes_longer_than_one_km(routes):
 def handle(req):
     json_req = json.loads(req)
     routes = get_routes_longer_than_one_km(json_req)
-    reducer_response = send_to_reducer(routes)
-    response = reducer_response.json()
-    return json.dumps(response)
+    # reducer_response = send_to_reducer(routes)
+    # response = reducer_response.json()
+    # return json.dumps(response)
+    return json.dumps(routes)

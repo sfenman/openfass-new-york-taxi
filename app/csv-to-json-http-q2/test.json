@@ -1,0 +1,53 @@
+{
+	"list": [{
+	"id": "id3004672",
+	"vendor_id": "1",
+	"pickup_datetime": "2016-06-30 23:59:58",
+	"passenger_count": 1,
+	"pickup_longitude": -73.9881286621094,
+	"pickup_latitude": 40.7320289611816,
+	"dropoff_longitude": -73.9901733398438,
+	"dropoff_latitude": 40.7566795349121,
+	"store_and_fwd_flag": "N"
+},{
+	"id": "id3004672",
+	"vendor_id": "1",
+	"pickup_datetime": "2016-06-30 23:59:58",
+	"passenger_count": 1,
+	"pickup_longitude": -71.9881286621094,
+	"pickup_latitude": 30.7320289611816,
+	"dropoff_longitude": -73.9901733398438,
+	"dropoff_latitude": 40.7566795349121,
+	"store_and_fwd_flag": "N"
+},{
+	"id": "id3004672",
+	"vendor_id": "1",
+	"pickup_datetime": "2016-06-30 23:59:58",
+	"passenger_count": 1,
+	"pickup_longitude": -73.9881286621094,
+	"pickup_latitude": 42.7320289611816,
+	"dropoff_longitude": -73.9901733398438,
+	"dropoff_latitude": 40.7566795349121,
+	"store_and_fwd_flag": "N"
+},{
+	"id": "id3004672",
+	"vendor_id": "1",
+	"pickup_datetime": "2016-06-30 23:59:58",
+	"passenger_count": 1,
+	"pickup_longitude": -73.9881286621094,
+	"pickup_latitude": 40.7320289611816,
+	"dropoff_longitude": -73.9901733398438,
+	"dropoff_latitude": 40.7566795349121,
+	"store_and_fwd_flag": "N"
+},{
+	"id": "id3004672",
+	"vendor_id": "1",
+	"pickup_datetime": "2016-06-30 23:59:58",
+	"passenger_count": 1,
+	"pickup_longitude": -73.9881286621094,
+	"pickup_latitude": 40.7320289611816,
+	"dropoff_longitude": -73.9901733398438,
+	"dropoff_latitude": 40.7566795349121,
+	"store_and_fwd_flag": "N"
+}]
+}

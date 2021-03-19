@@ -18,4 +18,19 @@ functions:
     lang: python3-http
     handler: ./csv-to-json-http
     image: unipasssbackend/csv-to-json-http:latest
-
+  csv-to-json-http-q2:
+    lang: python3-http
+    handler: ./csv-to-json-http-q2
+    image: unipasssbackend/csv-to-json-http-q2:latest
+  map-more-than-one-km:
+    lang: python3
+    handler: ./map-more-than-one-km
+    image: unipasssbackend/map-more-than-one-km:latest
+  map-more-than-ten-min:
+    lang: python3
+    handler: ./map-more-than-ten-min
+    image: unipasssbackend/map-more-than-ten-min:latest
+  map-more-than-two:
+    lang: python3
+    handler: ./map-more-than-two
+    image: unipasssbackend/map-more-than-two:latest

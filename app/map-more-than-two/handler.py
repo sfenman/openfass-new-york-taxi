@@ -15,7 +15,7 @@ def handle(req):
     for route in json_req:
         if route['passenger_count'] > 2:
             result.append(route)
-    reducer_response = send_to_reducer(result)
-    response = reducer_response.json()
-
-    return json.dumps(response)
+    # reducer_response = send_to_reducer(result)
+    # response = reducer_response.json()
+    # return json.dumps(response)
+    return json.dumps(result)

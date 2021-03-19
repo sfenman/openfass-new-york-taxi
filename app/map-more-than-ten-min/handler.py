@@ -36,6 +36,7 @@ def get_more_than_ten_minutes_routes(routes):
 def handle(req):
     json_req = json.loads(req)
     routes = get_more_than_ten_minutes_routes(json_req)
-    reducer_response = send_to_reducer(routes)
-    response = reducer_response.json()
-    return json.dumps(response)
+    # reducer_response = send_to_reducer(routes)
+    # response = reducer_response.json()
+    # return json.dumps(response)
+    return json.dumps(routes)
