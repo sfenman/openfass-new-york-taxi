@@ -34,3 +34,7 @@ functions:
     lang: python3
     handler: ./map-more-than-two
     image: unipasssbackend/map-more-than-two:latest
+  reduce-count-quarter-q2:
+    lang: python3
+    handler: ./reduce-count-quarter-q2
+    image: unipasssbackend/reduce-count-quarter-q2:latest
