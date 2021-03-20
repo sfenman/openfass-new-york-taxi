@@ -1,5 +1,5 @@
 import json
-from route import Route
+from .route import Route
 import redis
 
 
