@@ -39,6 +39,13 @@ def send_to_mapper(function, routes):
     return response
 
 
+def send_to_reducer(function):
+    url = 'http://gateway.openfaas:8080/function/' + function
+    response = requests.post(url)
+    logging.warning(response)
+    return response
+
+
 def is_date(string):
     try:
         datetime.strptime(string, '%Y-%m-%d %H:%M:%S')
@@ -67,13 +74,14 @@ def handle(event, context):
     response1 = send_to_mapper('map-more-than-ten-min', routes)
     response2 = send_to_mapper('map-more-than-two', routes)
     response3 = send_to_mapper('map-more-than-one-km', routes)
+    response4 = send_to_reducer('reduce-count-quarter-q2')
     logging.warning(response1.text)
     logging.warning(response2.text)
     logging.warning(response3.text)
 
     return {
         "statusCode": 200,
-        "body": response1.json(),
+        "body": response4.json(),
         "headers": {"content-type": "application/json"}
     }
 

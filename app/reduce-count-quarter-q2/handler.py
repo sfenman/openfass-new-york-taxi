@@ -1,6 +1,9 @@
 import json
 from .route import Route
 import redis
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 def convert_to_routes(response):
@@ -40,10 +43,13 @@ def get_more_than_two_pass_routes():
 
 
 def handle(req):
+    # get previous results
+    logging.debug("skata")
     one_km = get_more_than_one_km_routes()
     ten_min = get_more_than_ten_min_routes()
     two_pass = get_more_than_two_pass_routes()
     results = one_km & ten_min & two_pass
     results = list(results)
+    # safe results
     return json.dumps(results, default=lambda obj: obj.__dict__, sort_keys=True, indent=4)
 

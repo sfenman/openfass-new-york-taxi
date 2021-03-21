@@ -1,6 +1,8 @@
 import json
-import requests
 import redis
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
 
 def send_to_redis(quarters):
     try:

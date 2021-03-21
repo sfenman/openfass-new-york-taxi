@@ -30,6 +30,9 @@ functions:
     lang: python3
     handler: ./map-more-than-ten-min
     image: unipasssbackend/map-more-than-ten-min:latest
+    environment:
+      write_debug: true
+      combine_output: false
   map-more-than-two:
     lang: python3
     handler: ./map-more-than-two
@@ -38,3 +41,6 @@ functions:
     lang: python3
     handler: ./reduce-count-quarter-q2
     image: unipasssbackend/reduce-count-quarter-q2:latest
+    environment:
+      write_debug: true
+      combine_output: false

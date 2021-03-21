@@ -1,8 +1,9 @@
 import json
-import requests
 import redis
 from datetime import datetime
 from datetime import timedelta
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 def send_to_redis(quarters):
     try:
