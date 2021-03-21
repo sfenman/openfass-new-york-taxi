@@ -4,18 +4,13 @@ import math
 import redis
 import requests
 
-
-redis_host = "localhost"
-redis_port = 6379
-
 def send_to_redis(quarters):
     try:
-        r = redis.StrictRedis(host=redis_host, port=redis_port, charset="utf-8", decode_responses=True)
+        r = redis.StrictRedis(host="openfaas-redis-master", port=6379, charset="utf-8", decode_responses=True)
         data = json.dumps(quarters)
-        r.set('quarters', data)
+        r.set('one_km', data)
     except Exception as e:
         print(e)
-
 
 def is_more_than_one_km(route):
     lat1 = route['pickup_latitude']
@@ -44,6 +39,5 @@ def handle(req):
     json_req = json.loads(req)
     routes = get_routes_longer_than_one_km(json_req)
     reducer_response = send_to_redis(routes)
-    # response = reducer_response.json()
-    # return json.dumps(response)
-    return json.dumps(routes)
+    return
+

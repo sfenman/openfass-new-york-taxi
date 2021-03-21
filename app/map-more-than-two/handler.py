@@ -1,13 +1,14 @@
 import json
 import requests
+import redis
 
-
-def send_to_reducer(quarters):
-    url = 'http://gateway.openfaas:8080/function/reduce-count-quarter'
-    requests_data = json.dumps(quarters)
-    response = requests.post(url, data=requests_data)
-    return response
-
+def send_to_redis(quarters):
+    try:
+        r = redis.StrictRedis(host="openfaas-redis-master", port=6379, charset="utf-8", decode_responses=True)
+        data = json.dumps(quarters)
+        r.set('two_pass', data)
+    except Exception as e:
+        print(e)
 
 def handle(req):
     json_req = json.loads(req)
@@ -15,7 +16,7 @@ def handle(req):
     for route in json_req:
         if route['passenger_count'] > 2:
             result.append(route)
-    # reducer_response = send_to_reducer(result)
+    reducer_response = send_to_redis(result)
     # response = reducer_response.json()
     # return json.dumps(response)
-    return json.dumps(result)
+    return

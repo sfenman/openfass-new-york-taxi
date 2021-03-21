@@ -1,15 +1,16 @@
 import json
 import requests
+import redis
 from datetime import datetime
 from datetime import timedelta
 
-
-def send_to_reducer(quarters):
-    url = 'http://gateway.openfaas:8080/function/reduce-count-quarter'
-    requests_data = json.dumps(quarters)
-    response = requests.post(url, data=requests_data)
-    return response
-
+def send_to_redis(quarters):
+    try:
+        r = redis.StrictRedis(host="openfaas-redis-master", port=6379, charset="utf-8", decode_responses=True)
+        data = json.dumps(quarters)
+        r.set('ten_minutes', data)
+    except Exception as e:
+        print(e)
 
 def is_date(string):
     try:
@@ -36,7 +37,7 @@ def get_more_than_ten_minutes_routes(routes):
 def handle(req):
     json_req = json.loads(req)
     routes = get_more_than_ten_minutes_routes(json_req)
-    # reducer_response = send_to_reducer(routes)
+    reducer_response = send_to_redis(routes)
     # response = reducer_response.json()
     # return json.dumps(response)
-    return json.dumps(routes)
+    return

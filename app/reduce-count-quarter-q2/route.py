@@ -24,4 +24,3 @@ class Route:
 
     def __str__(self) -> str:
         return 'route id: ' + str(self.route_id)
-
