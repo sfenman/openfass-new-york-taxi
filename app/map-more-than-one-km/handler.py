@@ -8,7 +8,7 @@ import requests
 redis_host = "localhost"
 redis_port = 6379
 
-def send_to_redis(quarters)
+def send_to_redis(quarters):
     try:
         r = redis.StrictRedis(host=redis_host, port=redis_port, charset="utf-8", decode_responses=True)
         data = json.dumps(quarters)
