@@ -4,6 +4,7 @@ import requests
 from termcolor import colored
 from datetime import datetime
 
+
 def make_to_csv(routes):
     with open('temp.csv', 'w', newline='') as file:
         writer = csv.writer(file)
@@ -26,7 +27,7 @@ with open('./routes.csv') as csv_file:
         batch.append(row)
         if count == 100:
             now = datetime.now()
-            info = 'Info: Sending 100 batch time: ' +  now.strftime("%H:%M:%S")
+            info = 'Info: Sending 100 batch time: ' + now.strftime("%H:%M:%S")
             print(info)
             make_to_csv(batch)
             send_batch()

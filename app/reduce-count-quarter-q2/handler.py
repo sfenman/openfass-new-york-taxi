@@ -13,11 +13,13 @@ def convert_to_routes(response):
         routes.add(temp)
     return routes
 
+
 def call_redis(key):
     result = []
-    r = redis.StrictRedis(host="openfaas-redis-master-0", port=6379, charset="utf-8", decode_responses=True)
+    r = redis.StrictRedis(host="openfaas-redis-master", port=6379, charset="utf-8", decode_responses=True)
     result = r.get(key)
     return json.loads(result)
+
 
 def get_more_than_one_km_routes():
     response = call_redis('one_km')
@@ -36,6 +38,7 @@ def get_more_than_two_pass_routes():
     response = convert_to_routes(response)
     return response
 
+
 def handle(req):
     one_km = get_more_than_one_km_routes()
     ten_min = get_more_than_ten_min_routes()
@@ -43,3 +46,4 @@ def handle(req):
     results = one_km & ten_min & two_pass
     results = list(results)
     return json.dumps(results, default=lambda obj: obj.__dict__, sort_keys=True, indent=4)
+
