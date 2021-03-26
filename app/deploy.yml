@@ -44,3 +44,10 @@ functions:
     environment:
       write_debug: true
       combine_output: false
+  redis-api:
+    lang: python3-http
+    handler: ./redis-api
+    image: unipasssbackend/redis-api:latest
+    environment:
+      write_debug: true
+      combine_output: false

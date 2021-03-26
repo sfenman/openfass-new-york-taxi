@@ -12,8 +12,8 @@ def make_to_csv(routes):
 
 
 def send_batch():
-    response = requests.post('http://localhost:8080/function/csv-to-json-http', files={'file': open('temp.csv', 'r')})
-    print(colored(response.json(), 'green'))
+    response = requests.post('http://localhost:8080/function/csv-to-json-http-q2', files={'file': open('temp.csv', 'r')})
+    print(colored(response.text, 'green'))
 
 
 with open('/home/billk97/Downloads/fares.csv') as csv_file:
@@ -33,4 +33,4 @@ with open('/home/billk97/Downloads/fares.csv') as csv_file:
             send_batch()
             count = 0
             batch = []
-            time.sleep(3)
+            time.sleep(5)

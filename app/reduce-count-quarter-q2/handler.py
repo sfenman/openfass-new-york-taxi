@@ -21,7 +21,18 @@ def call_redis(key):
     result = []
     r = redis.StrictRedis(host="openfaas-redis-master", port=6379, charset="utf-8", decode_responses=True)
     result = r.get(key)
+    if result is None:
+        result = json.dumps([])
     return json.loads(result)
+
+
+def send_to_redis(quarters):
+    try:
+        r = redis.StrictRedis(host="openfaas-redis-master", port=6379, charset="utf-8", decode_responses=True)
+        data = json.dumps(quarters, default=lambda obj: obj.__dict__, sort_keys=True, indent=4)
+        r.set('intermediate', data)
+    except Exception as e:
+        print(e)
 
 
 def get_more_than_one_km_routes():
@@ -44,12 +55,14 @@ def get_more_than_two_pass_routes():
 
 def handle(req):
     # get previous results
-    logging.debug("skata")
+    previous = call_redis('intermediate')
     one_km = get_more_than_one_km_routes()
     ten_min = get_more_than_ten_min_routes()
     two_pass = get_more_than_two_pass_routes()
     results = one_km & ten_min & two_pass
     results = list(results)
+    results = previous + results
     # safe results
+    send_to_redis(results)
     return json.dumps(results, default=lambda obj: obj.__dict__, sort_keys=True, indent=4)
 

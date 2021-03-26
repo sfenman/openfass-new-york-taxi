@@ -1,7 +1,7 @@
 [
    {
       "id":"id3004672",
-      "vendor_id":"1",
+      "vendor_id": 11,
       "pickup_datetime":"2016-06-30 22:40:58",
       "drop_off_datetime": "2016-06-30 22:59:58",
       "passenger_count": 1,
@@ -13,9 +13,9 @@
    },
    {
       "id":"id3505355",
-      "vendor_id":"1",
+      "vendor_id": 1,
       "pickup_datetime":"2016-06-30 23:59:53",
-      "dro_off_datetime": "2016-06-30 23:59:58",
+      "drop_off_datetime": "2016-06-30 23:59:58",
       "passenger_count": 3,
       "pickup_longitude": -73.9642028808594,
       "pickup_latitude": 40.6799926757813,

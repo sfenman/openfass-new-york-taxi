@@ -78,6 +78,7 @@ def handle(event, context):
     logging.warning(response1.text)
     logging.warning(response2.text)
     logging.warning(response3.text)
+    logging.warning(response4.text)
 
     return {
         "statusCode": 200,
